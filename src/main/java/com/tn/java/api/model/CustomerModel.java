@@ -1,44 +1,43 @@
 package com.tn.java.api.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Entity(name = "customers")
-public class CustomerModel {
+public class CustomerModel implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id", nullable = false)
-	public Long customerId;
+	@SequenceGenerator(name = "customers_customer_id_seq", sequenceName = "customers_customer_id_seq")
+	private Long customerId;
 	
 	@Column(name = "first_name", nullable = false)
-     public String firstName;
+	private String firstName;
 	
 	@Column(name = "last_name", nullable = false)
-     public String lastName;
+	private String lastName;
 	
 	@Column(name = "phone", nullable = true)
-     public String phone;
+	private String phone;
 	
 	@Column(name = "email", nullable = false)
-     public String email;
+	private String email;
 	
 	@Column(name = "street", nullable = true)
-     public String street;
+	private String street;
 	
 	@Column(name = "city", nullable = true)
-     public String city;
+	private String city;
 	
 	@Column(name = "state", nullable = true)
-     public String state;
+	private String state;
 	
 	@Column(name = "zip_code", nullable = true)
-     public String zipCode;
+	private String zipCode;
     
 }
